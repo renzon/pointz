@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Posto Flex</title>
+  <title>{{ report.title }}</title>
 </head>
 <body>
 
-<h1>GAS - Posto Flex - Fortaleza</h1>
+<h1>{{ report.title }}</h1>
 
 <table>
   <tr>
     <th></th>
-    <th>jan-2017</th>
-    <th>fev-2017</th>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <th>{{ monthly_summary.title }}</th>
+    {% endfor %}
     <th>Total Periodo</th>
   </tr>
   <tr>

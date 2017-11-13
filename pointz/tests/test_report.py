@@ -1,19 +1,18 @@
-from os import path
-
 import pytest
 
-from pointz import report
+from pointz.report import render, Report, MonthlySummary
 
 
 def read_report_content():
-    # report_path = path.dirname(__file__)
-    # report_path = path.join(report_path, '..', '..', 'contrib', 'dre-sample.html')
-    # report_path = path.abspath(report_path)
-    # report_file = open(report_path, 'r', encoding='utf8')
-    # report_content = '\n'.join(report_file.readlines())
-
-
-    return report.render('dre.html')
+    monthly_summaries = [
+        MonthlySummary('jan', 2017),
+        MonthlySummary('fev', 2017),
+    ]
+    report = Report(
+        'GAS - Posto Flex - Fortaleza',
+        monthly_summaries
+    )
+    return render('dre.html', report=report)
 
 
 def test_title():
