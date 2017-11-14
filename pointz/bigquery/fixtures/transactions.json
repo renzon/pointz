@@ -1,0 +1,2 @@
+{"id": 1, "sale":  100 , "pointz_sale": 0, "pointz": 0, "year": 2017, "month": 1 , "day": 1, "store_id": 1, "store_name": "Posto 1",   "region_id": 1, "region_name": "Fortaleza", "client_id": 1, "client_name": "Posto Flex",      "segment_name": "GAS"  }
+{"id": 2, "sale":  0 , "pointz_sale": 1000, "pointz": 1, "year": 2017, "month": 1 , "day": 2, "store_id": 2, "store_name": "Posto 2",   "region_id": 1, "region_name": "Fortaleza", "client_id": 1, "client_name": "Posto Flex",      "segment_name": "GAS"  }

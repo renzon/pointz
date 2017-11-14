@@ -1,9 +1,9 @@
 from google.api_core.exceptions import NotFound
 from google.cloud.bigquery import Table, SchemaField
 
-from pointz.bigquery.client import client
+from pointz.bigquery.client import client, dataset_pointz
 
-dataset_pointz = client.dataset('pointz')
+
 
 print(dataset_pointz)
 
@@ -16,6 +16,7 @@ except NotFound:
         SchemaField('id', 'INT64', 'REQUIRED', None),
         SchemaField('sale', 'INT64', 'REQUIRED', None),
         SchemaField('pointz_sale', 'INT64', 'REQUIRED', None),
+        SchemaField('pointz', 'INT64', 'REQUIRED', None),
         SchemaField('year', 'INT64', 'REQUIRED', None),
         SchemaField('month', 'INT64', 'REQUIRED', None),
         SchemaField('day', 'INT64', 'REQUIRED', None),
