@@ -70,6 +70,7 @@ class Report:
     def total_pointz_sales(self):
         result = sum(summary._pointz_sales for summary in self.monthly_summaries)
         return _to_str_with_2_digits(result)
+
     @property
     def total_base_coin_emission(self):
         result = sum(summary._base_coin_emission for summary in self.monthly_summaries)
