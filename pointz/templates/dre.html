@@ -24,14 +24,16 @@
   </tr>
   <tr>
     <th>Vendas Totais</th>
-    <td>R$ 5.00</td>
-    <td>R$ 18.00</td>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <th>R$ {{ monthly_summary.sales }}</th>
+    {% endfor %}
     <td>R$ 23.00</td>
   </tr>
   <tr>
     <th>Vendas com pointz</th>
-    <td>R$ 4.00</td>
-    <td>R$ 16.00</td>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <th>R$ {{ monthly_summary.pointz_sales }}</th>
+    {% endfor %}
     <td>R$ 20.00</td>
   </tr>
   <tr>
@@ -42,15 +44,15 @@
   </tr>
   <tr>
     <th>Valor Moeda Base</th>
-    <td>R$ 0.50</td>
-    <td>R$ 0.25</td>
-    <td> --- </td>
+    <td>R$ 0.01</td>
+    <td>R$ 0.02</td>
+    <td> ---</td>
   </tr>
   <tr>
     <th>Emissão Moeda Base</th>
-    <td>R$ 2.00</td>
-    <td>R$ 4.00</td>
-    <td>R$ 6.00</td>
+    <td>R$ 0.10</td>
+    <td>R$ 0.80</td>
+    <td>R$ 0.90</td>
   </tr>
 </table>
 

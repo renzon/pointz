@@ -5,8 +5,8 @@ from pointz.report import render, Report, MonthlySummary
 
 def read_report_content():
     monthly_summaries = [
-        MonthlySummary('jan', 2017),
-        MonthlySummary('fev', 2017),
+        MonthlySummary('jan', 2017, sales=500, pointz_sales=400),
+        MonthlySummary('fev', 2017, sales=1800, pointz_sales=1600),
     ]
     report = Report(
         'GAS - Posto Flex - Fortaleza',
@@ -44,13 +44,13 @@ def test_sales_percentage(percentage):
     assert percentage in report_content
 
 
-@pytest.mark.parametrize('value', ['0.50', '0.25'])
+@pytest.mark.parametrize('value', ['0.01', '0.02'])
 def test_base_point_value(value):
     report_content = read_report_content()
     assert value in report_content
 
 
-@pytest.mark.parametrize('value', ['2.00', '4.00', '6.00'])
+@pytest.mark.parametrize('value', ['0.10', '0.90', '0.90'])
 def test_base_point_emission(value):
     report_content = read_report_content()
     assert value in report_content
