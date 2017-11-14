@@ -45,8 +45,9 @@
   </tr>
   <tr>
     <th>Valor Moeda Base</th>
-    <td>R$ 0.01</td>
-    <td>R$ 0.02</td>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <th>R$ {{ monthly_summary.base_coin_value }}</th>
+    {% endfor %}
     <td> ---</td>
   </tr>
   <tr>

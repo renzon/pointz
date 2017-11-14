@@ -15,7 +15,7 @@ def _to_str_with_2_digits(dec):
 
 
 class MonthlySummary:
-    def __init__(self, month, year, sales, pointz_sales):
+    def __init__(self, month, year, sales, pointz_sales, base_coin_value):
         """Class representing a monthly summary dre data
 
         :param month: month of summary
@@ -23,6 +23,7 @@ class MonthlySummary:
         :param sales: total sales in cents
         :param pointz_sales: total sales with pointz in cents
         """
+        self._base_coin_value = Decimal(base_coin_value) / 1000
         self._sales = Decimal(sales) / 100
         self._pointz_sales = Decimal(pointz_sales) / 100
         self.year = year
@@ -43,6 +44,10 @@ class MonthlySummary:
     @property
     def sales_percentage(self):
         return self._pointz_sales * 100 / self._sales
+
+    @property
+    def base_coin_value(self):
+        return f'{self._base_coin_value:.3f}'
 
 
 class Report:
