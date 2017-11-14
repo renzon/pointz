@@ -40,6 +40,10 @@ class MonthlySummary:
     def title(self):
         return f'{self.month}-{self.year}'
 
+    @property
+    def sales_percentage(self):
+        return self._pointz_sales * 100 / self._sales
+
 
 class Report:
     def __init__(self, title, monthly_summaries):

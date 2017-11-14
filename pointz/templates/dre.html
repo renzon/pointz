@@ -38,8 +38,9 @@
   </tr>
   <tr>
     <th>Participação</th>
-    <td>80%</td>
-    <td>89%</td>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <td>{{ monthly_summary.sales_percentage }}%</td>
+    {% endfor %}
     <td>87%</td>
   </tr>
   <tr>
