@@ -38,6 +38,7 @@ class MonthlySummary:
     @property
     def pointz_sales(self):
         return _to_str_with_2_digits(self._pointz_sales)
+
     @property
     def base_coin_emission(self):
         return _to_str_with_2_digits(self._base_coin_emission)
@@ -59,6 +60,26 @@ class Report:
     def __init__(self, title, monthly_summaries):
         self.monthly_summaries = monthly_summaries
         self.title = title
+
+    @property
+    def total_sales(self):
+        result = sum(summary._sales for summary in self.monthly_summaries)
+        return _to_str_with_2_digits(result)
+
+    @property
+    def total_pointz_sales(self):
+        result = sum(summary._pointz_sales for summary in self.monthly_summaries)
+        return _to_str_with_2_digits(result)
+    @property
+    def total_base_coin_emission(self):
+        result = sum(summary._base_coin_emission for summary in self.monthly_summaries)
+        return _to_str_with_2_digits(result)
+
+    @property
+    def total_sales_percentage(self):
+        result = sum(summary._pointz_sales for summary in self.monthly_summaries) * 100 / sum(
+            summary._sales for summary in self.monthly_summaries)
+        return round(result)
 
 
 def render(template, report):

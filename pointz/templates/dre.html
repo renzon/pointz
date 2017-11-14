@@ -27,21 +27,21 @@
     {% for monthly_summary in report.monthly_summaries  %}
       <th>R$ {{ monthly_summary.sales }}</th>
     {% endfor %}
-    <td>R$ 23.00</td>
+    <td>R$ {{ report.total_sales }}</td>
   </tr>
   <tr>
     <th>Vendas com pointz</th>
     {% for monthly_summary in report.monthly_summaries  %}
       <th>R$ {{ monthly_summary.pointz_sales }}</th>
     {% endfor %}
-    <td>R$ 20.00</td>
+    <td>R$ {{ report.total_pointz_sales }}</td>
   </tr>
   <tr>
     <th>Participação</th>
     {% for monthly_summary in report.monthly_summaries  %}
       <td>{{ monthly_summary.sales_percentage }}%</td>
     {% endfor %}
-    <td>87%</td>
+    <td>{{ report.total_sales_percentage }}%</td>
   </tr>
   <tr>
     <th>Valor Moeda Base</th>
@@ -55,7 +55,7 @@
     {% for monthly_summary in report.monthly_summaries  %}
       <th>R$ {{ monthly_summary.base_coin_emission }}</th>
     {% endfor %}
-    <td>R$ 0.90</td>
+    <td>R$ {{ report.total_base_coin_emission }}</td>
   </tr>
 </table>
 
