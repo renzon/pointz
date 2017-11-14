@@ -52,8 +52,9 @@
   </tr>
   <tr>
     <th>Emissão Moeda Base</th>
-    <td>R$ 0.10</td>
-    <td>R$ 0.80</td>
+    {% for monthly_summary in report.monthly_summaries  %}
+      <th>R$ {{ monthly_summary.base_coin_emission }}</th>
+    {% endfor %}
     <td>R$ 0.90</td>
   </tr>
 </table>
