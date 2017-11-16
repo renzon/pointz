@@ -14,6 +14,12 @@ def _to_str_with_2_digits(dec):
     return f'{dec:.2f}'
 
 
+_number_to_month_str_dct = {
+    1: 'jan', 2: 'fev', 3: 'mar', 4: 'abr', 5: 'mai', 6: 'jun',
+    7: 'jul', 8: 'ago', 9: 'set', 10: 'out', 11: 'nov', 12: 'dez'
+}
+
+
 class MonthlySummary:
     def __init__(self, month, year, sales, pointz_sales, base_coin_value, base_coin_emission):
         """Class representing a monthly summary dre data
@@ -49,7 +55,7 @@ class MonthlySummary:
 
     @property
     def sales_percentage(self):
-        return self._pointz_sales * 100 / self._sales
+        return round(self._pointz_sales * 100 / self._sales)
 
     @property
     def base_coin_value(self):
@@ -57,7 +63,8 @@ class MonthlySummary:
 
     @classmethod
     def from_bigquery_row(cls, row):
-        summary = cls(row.month, row.year, row.sales, row.pointz_sales, 10, 10)
+        month = _number_to_month_str_dct[row.month]
+        summary = cls(month, row.year, row.sales, row.pointz_sales, 10, 10)
         return summary
 
 
@@ -97,3 +104,8 @@ class Report:
 
 def render(template, report):
     return _env.get_template(template).render(report=report)
+
+
+def render_annual_dre_per_partner_region(bigquery_result):
+    report=Report.from_bigquery_result(bigquery_result)
+    return render('dre.html', report=report)

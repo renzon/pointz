@@ -25,14 +25,14 @@
   <tr>
     <th>Vendas Totais</th>
     {% for monthly_summary in report.monthly_summaries  %}
-      <th>R$ {{ monthly_summary.sales }}</th>
+      <td>R$ {{ monthly_summary.sales }}</td>
     {% endfor %}
     <td>R$ {{ report.total_sales }}</td>
   </tr>
   <tr>
     <th>Vendas com pointz</th>
     {% for monthly_summary in report.monthly_summaries  %}
-      <th>R$ {{ monthly_summary.pointz_sales }}</th>
+      <td>R$ {{ monthly_summary.pointz_sales }}</td>
     {% endfor %}
     <td>R$ {{ report.total_pointz_sales }}</td>
   </tr>
@@ -46,14 +46,14 @@
   <tr>
     <th>Valor Moeda Base</th>
     {% for monthly_summary in report.monthly_summaries  %}
-      <th>R$ {{ monthly_summary.base_coin_value }}</th>
+      <td>R$ {{ monthly_summary.base_coin_value }}</td>
     {% endfor %}
     <td> ---</td>
   </tr>
   <tr>
     <th>Emissão Moeda Base</th>
     {% for monthly_summary in report.monthly_summaries  %}
-      <th>R$ {{ monthly_summary.base_coin_emission }}</th>
+      <td>R$ {{ monthly_summary.base_coin_emission }}</td>
     {% endfor %}
     <td>R$ {{ report.total_base_coin_emission }}</td>
   </tr>

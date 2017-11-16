@@ -1,17 +1,20 @@
 import pytest
+from google.cloud.bigquery._helpers import Row
 
-from pointz.report import render, Report, MonthlySummary
+from pointz.report import render, Report
 
 
 def read_report_content():
-    monthly_summaries = [
-        MonthlySummary('jan', 2017, sales=500, pointz_sales=400, base_coin_value=10, base_coin_emission=10),
-        MonthlySummary('fev', 2017, sales=1800, pointz_sales=1600, base_coin_value=20, base_coin_emission=80),
+    columns_dct = {'sales': 0, 'pointz_sales': 1, 'pointz': 2, 'year': 3, 'month': 4, 'region_name': 5,
+                   'partner_name': 6,
+                   'segment_name': 7}
+
+    annual_report_result = [
+        Row((500, 400, 10, 2017, 1, 'Fortaleza', 'Posto Flex', 'GAS'), columns_dct),
+        Row((1800, 1600, 40, 2017, 2, 'Fortaleza', 'Posto Flex', 'GAS'), columns_dct)
     ]
-    report = Report(
-        'GAS - Posto Flex - Fortaleza',
-        monthly_summaries
-    )
+
+    report = Report.from_bigquery_result(annual_report_result)
     return render('dre.html', report=report)
 
 
