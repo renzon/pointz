@@ -24,8 +24,8 @@ except NotFound:
         SchemaField('store_id', 'INT64', 'REQUIRED', None),
         SchemaField('region_name', 'string', 'REQUIRED', None),
         SchemaField('region_id', 'INT64', 'REQUIRED', None),
-        SchemaField('client_name', 'string', 'REQUIRED', None),
-        SchemaField('client_id', 'INT64', 'REQUIRED', None),
+        SchemaField('partner_name', 'string', 'REQUIRED', None),
+        SchemaField('partner_id', 'INT64', 'REQUIRED', None),
         SchemaField('segment_name', 'string', 'REQUIRED', None),
     ]
 
