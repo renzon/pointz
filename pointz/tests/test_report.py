@@ -7,11 +7,10 @@ from pointz.report import render, Report
 def read_report_content():
     columns_dct = {'sales': 0, 'pointz_sales': 1, 'pointz': 2, 'year': 3, 'month': 4, 'region_name': 5,
                    'partner_name': 6,
-                   'segment_name': 7}
-
+                   'segment_name': 7, 'partner_id': 8}
     annual_report_result = [
-        Row((500, 400, 10, 2017, 1, 'Fortaleza', 'Posto Flex', 'GAS'), columns_dct),
-        Row((1800, 1600, 40, 2017, 2, 'Fortaleza', 'Posto Flex', 'GAS'), columns_dct)
+        Row((500, 400, 10, 2017, 1, 'Fortaleza', 'Posto Flex', 'GAS', 1), columns_dct),
+        Row((1800, 1600, 40, 2017, 2, 'Fortaleza', 'Posto Flex', 'GAS', 1), columns_dct)
     ]
 
     report = Report.from_bigquery_result(annual_report_result)

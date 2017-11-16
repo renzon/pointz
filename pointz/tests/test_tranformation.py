@@ -5,14 +5,12 @@ from google.cloud.bigquery._helpers import Row
 from pointz.report import MonthlySummary, Report
 
 columns_dct = {'sales': 0, 'pointz_sales': 1, 'pointz': 2, 'year': 3, 'month': 4, 'region_name': 5, 'partner_name': 6,
-               'segment_name': 7}
-
+               'segment_name': 7, 'partner_id': 8}
 annual_report_result = [
-    Row((500, 400, 10, 2017, 1, 'Fortaleza', 'Posto Flex', 'GAS'), columns_dct),
-    Row((1800, 1600, 40, 2017, 2, 'Fortaleza', 'Posto Flex', 'GAS'), columns_dct)
+    Row((500, 400, 10, 2017, 1, 'Fortaleza', 'Posto Flex', 'GAS', 1), columns_dct),
+    Row((1800, 1600, 40, 2017, 2, 'Fortaleza', 'Posto Flex', 'GAS', 1), columns_dct)
 ]
 row = annual_report_result[0]
-
 
 
 def test_row_to_monthly_summary_pointz_sales():
@@ -38,6 +36,32 @@ def test_row_to_monthly_sales_percentage(row, expected_percentage):
     """Test that a row can be transformed into a MonthlySummary"""
     summary = MonthlySummary.from_bigquery_row(row)
     assert expected_percentage == summary.sales_percentage
+
+
+@pytest.mark.parametrize(
+    'row,base_coin_value',
+    [
+        (annual_report_result[0], '0.010'),
+        (annual_report_result[1], '0.020')
+    ]
+)
+def test_row_to_monthly_base_coin_value(row, base_coin_value):
+    """Test that a row can be transformed into a MonthlySummary"""
+    summary = MonthlySummary.from_bigquery_row(row)
+    assert base_coin_value == summary.base_coin_value
+
+
+@pytest.mark.parametrize(
+    'row,base_coin_emission',
+    [
+        (annual_report_result[0], '0.10'),
+        (annual_report_result[1], '0.80')
+    ]
+)
+def test_row_to_monthly_base_coin_emission(row, base_coin_emission):
+    """Test that a row can be transformed into a MonthlySummary"""
+    summary = MonthlySummary.from_bigquery_row(row)
+    assert base_coin_emission == summary.base_coin_emission
 
 
 def test_row_to_monthly_summary_year():

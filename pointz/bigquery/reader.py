@@ -13,7 +13,8 @@ SELECT
   month,
   region_name,
   partner_name,
-  segment_name
+  segment_name,
+  partner_id
 FROM
   `pointz.transactions`
 WHERE
@@ -23,13 +24,14 @@ GROUP BY
   partner_name,
   region_name,
   month,
-  year
+  year,
+  partner_id
 ORDER BY
   segment_name,
   partner_name,
   region_name,
-  month,
-  year
+  year,
+  month
 """
 
 

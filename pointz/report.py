@@ -4,6 +4,8 @@ from os import path
 from jinja2.environment import Environment
 from jinja2.loaders import FileSystemLoader
 
+from pointz.db.partners_cost import calculate_base_coin_cost
+
 _templates_path = path.dirname(__file__)
 _templates_path = path.join(_templates_path, 'templates')
 
@@ -63,8 +65,11 @@ class MonthlySummary:
 
     @classmethod
     def from_bigquery_row(cls, row):
-        month = _number_to_month_str_dct[row.month]
-        summary = cls(month, row.year, row.sales, row.pointz_sales, 10, 10)
+        month = row.month
+        year = row.year
+        base_coin_value, base_coin_emission = calculate_base_coin_cost(row.partner_id, year, month, row.pointz)
+        month = _number_to_month_str_dct[month]
+        summary = cls(month, year, row.sales, row.pointz_sales, base_coin_value, base_coin_emission)
         return summary
 
 
@@ -107,5 +112,5 @@ def render(template, report):
 
 
 def render_annual_dre_per_partner_region(bigquery_result):
-    report=Report.from_bigquery_result(bigquery_result)
+    report = Report.from_bigquery_result(bigquery_result)
     return render('dre.html', report=report)
