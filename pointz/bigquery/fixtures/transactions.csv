@@ -1,2 +1,30 @@
 id,sale,pointz_sale,pointz,year,month,day,store_name,store_id,region_name,region_id,partner_name,partner_id,segment_name
 1,0,80,1,2017,1,1,Posto 1,1,Fortaleza,1,Posto Flex,1,GAS
+2,0,120,3,2017,1,2,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+3,0,1,2,2017,1,3,Posto 1,1,Fortaleza,1,Posto Flex,1,GAS
+4,0,199,4,2017,1,4,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+5,49,0,0,2017,1,5,Posto 1,1,Fortaleza,1,Posto Flex,1,GAS
+6,51,0,0,2017,1,6,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+7,200,0,0,2017,2,7,Posto 1,1,Fortaleza,1,Posto Flex,1,GAS
+8,0,1600,40,2017,2,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+9,0,80,1,2016,1,1,Posto 1,1,Fortaleza,1,Posto Flex,1,GAS
+10,0,120,3,2016,1,2,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+11,0,1,2,2016,1,3,Posto 1,1,Fortaleza,1,Posto Flex,1,GAS
+12,0,199,4,2016,1,4,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+13,49,0,0,2016,1,5,Posto 1,1,Fortaleza,1,Posto Flex,1,GAS
+14,51,0,0,2016,1,6,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+15,200,0,0,2016,2,7,Posto 1,1,Fortaleza,1,Posto Flex,1,GAS
+16,10,1600,40,2016,2,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+17,10,1600,40,2016,3,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+18,10,1600,40,2016,4,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+19,10,1600,40,2016,5,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+20,10,1600,40,2016,6,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+21,10,1600,40,2016,7,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+22,10,1600,40,2016,8,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+23,10,1600,40,2016,9,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+24,10,1600,40,2016,10,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+25,10,1600,40,2016,11,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+26,10,1600,40,2016,12,8,Posto 2,2,Fortaleza,1,Posto Flex,1,GAS
+27,10,1600,40,2016,12,8,Posto 3,3,São Paulo,2,Posto Flex,1,GAS
+28,10,1600,40,2016,12,8,Posto 4,4,Fortaleza,3,Posto Foo,2,GAS
+29,10,1600,40,2016,12,8,Fartura 5,5,Fortaleza,4,Fartura,3,SUPER
