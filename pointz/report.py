@@ -87,6 +87,13 @@ class Report:
             summary._sales for summary in self.monthly_summaries)
         return round(result)
 
+    @classmethod
+    def from_bigquery_result(cls, bigquery_result):
+        monthly_summaries = [MonthlySummary.from_bigquery_row(row) for row in bigquery_result]
+        row = bigquery_result[0]
+        title = f'{row.segment_name} - {row.partner_name} - {row.region_name}'
+        return cls(title, monthly_summaries)
+
 
 def render(template, report):
     return _env.get_template(template).render(report=report)
