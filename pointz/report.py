@@ -55,6 +55,11 @@ class MonthlySummary:
     def base_coin_value(self):
         return f'{self._base_coin_value:.3f}'
 
+    @classmethod
+    def from_bigquery_row(cls, row):
+        summary = cls(row.month, row.year, row.sales, row.pointz_sales, 10, 10)
+        return summary
+
 
 class Report:
     def __init__(self, title, monthly_summaries):

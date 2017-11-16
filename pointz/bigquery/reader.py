@@ -6,8 +6,8 @@ from pointz.bigquery.client import client
 
 ANNUAL_DRE_QUERY = """
 SELECT
-  SUM(sale) AS sale,
-  SUM(pointz_sale) AS pointz_sale,
+  SUM(sale + pointz_sale) AS sales,
+  SUM(pointz_sale) AS pointz_sales,
   SUM(pointz) as pointz,
   year,
   month,
@@ -49,4 +49,5 @@ def get_annual_dre_by_partner_region(year=None):
 
 if __name__ == '__main__':
     annual_reports = get_annual_dre_by_partner_region()
-    print(list(annual_reports))
+    lst = list(annual_reports)
+    print(lst)
