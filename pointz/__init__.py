@@ -7,6 +7,7 @@ from pointz.report import render_annual_dre_per_partner_region
 
 def create_annual_dre_per_partner_region(year=None):
     result = list(get_annual_dre_by_partner_region(year))
+    print(result)
     report = render_annual_dre_per_partner_region(result)
     build_dir_path = path.dirname(__file__)
     build_dir_path = path.abspath(path.join(build_dir_path, '..', 'build'))

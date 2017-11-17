@@ -1,4 +1,5 @@
 from decimal import Decimal
+from itertools import groupby
 from os import path
 
 from jinja2.environment import Environment
@@ -105,6 +106,13 @@ class Report:
         row = bigquery_result[0]
         title = f'{row.segment_name} - {row.partner_name} - {row.region_name}'
         return cls(title, monthly_summaries)
+
+
+def extract_segment_partner_region_title(row):
+    return f'{row.segment_name} - {row.partner_name} - {row.region_name}'
+
+def group_region_result(bigquery_result):
+    return groupby(bigquery_result, key=extract_segment_partner_region_title)
 
 
 def render(template, report):
