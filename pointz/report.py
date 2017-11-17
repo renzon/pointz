@@ -101,15 +101,14 @@ class Report:
         return round(result)
 
     @classmethod
-    def from_bigquery_result(cls, bigquery_result):
+    def from_bigquery_result(cls, bigquery_result, title='GAS - Posto Flex - Fortaleza'):
         monthly_summaries = [MonthlySummary.from_bigquery_row(row) for row in bigquery_result]
-        row = bigquery_result[0]
-        title = f'{row.segment_name} - {row.partner_name} - {row.region_name}'
         return cls(title, monthly_summaries)
 
 
 def extract_segment_partner_region_title(row):
     return f'{row.segment_name} - {row.partner_name} - {row.region_name}'
+
 
 def group_region_result(bigquery_result):
     return groupby(bigquery_result, key=extract_segment_partner_region_title)
@@ -119,6 +118,14 @@ def render(template, report):
     return _env.get_template(template).render(report=report)
 
 
-def render_annual_dre_per_partner_region(bigquery_result):
-    report = Report.from_bigquery_result(bigquery_result)
+def render_annual_dre_per_partner_region(bigquery_result, title):
+    report = Report.from_bigquery_result(bigquery_result, title)
     return render('dre.html', report=report)
+
+
+def render_multiple_annual_dres(bigquery_result):
+    result = []
+    for title, annual_group in group_region_result(bigquery_result):
+        result.append((title, render_annual_dre_per_partner_region(annual_group, title)))
+
+    return result

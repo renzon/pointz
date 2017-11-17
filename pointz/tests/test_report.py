@@ -13,7 +13,7 @@ def read_report_content():
         Row((1800, 1600, 40, 2017, 2, 'Fortaleza', 'Posto Flex', 'GAS', 1), columns_dct)
     ]
 
-    report = Report.from_bigquery_result(annual_report_result)
+    report = Report.from_bigquery_result(annual_report_result, 'GAS - Posto Flex - Fortaleza')
     return render('dre.html', report=report)
 
 

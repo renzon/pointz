@@ -2,7 +2,7 @@
 import pytest
 from google.cloud.bigquery._helpers import Row
 
-from pointz.report import MonthlySummary, Report, group_region_result
+from pointz.report import MonthlySummary, Report, group_region_result, render_multiple_annual_dres
 
 columns = {'sales': 0, 'pointz_sales': 1, 'pointz': 2, 'year': 3, 'month': 4, 'region_name': 5, 'partner_name': 6,
            'segment_name': 7, 'partner_id': 8}
@@ -140,3 +140,25 @@ def test_group_key(expected_len, i):
     group_i = groups[i]
     rows = group_i[1]
     assert expected_len == len(rows)
+
+
+def test_different_regions_report_len():
+    assert 4 == len(list(render_multiple_annual_dres(multiple_regions_result)))
+
+@pytest.mark.parametrize(
+    'title,i',
+    [
+        ('GAS - Posto Flex - Fortaleza', 0),
+        ('GAS - Posto Flex - São Paulo', 1),
+        ('GAS - Posto Foo - Fortaleza', 2),
+        ('SUPER - Fartura - Fortaleza', 3),
+    ]
+)
+def test_report_title(title, i):
+    reports = render_multiple_annual_dres(multiple_regions_result)
+    report_i=reports[i]
+    report_title=report_i[0]
+    assert title == report_title
+
+
+
