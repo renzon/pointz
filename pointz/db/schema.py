@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, create_engine, ForeignKey, DECIMAL
+from sqlalchemy import Column, Integer, String, create_engine, ForeignKey, DECIMAL, DateTime
 from sqlalchemy.ext.declarative.api import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -29,13 +29,14 @@ class Subsidiary(Base):
 
 
 class Transaction(Base):
-    __tablename__ = 'DimFatoExtrato'
+    __tablename__ = 'FatoExtrato'
     id = Column(Integer, primary_key=True)
     subsidiary_id = Column(Integer, ForeignKey(Subsidiary.id), nullable=False)
     subsidiary = relationship(Subsidiary, innerjoin=True)
     sale = Column(DECIMAL(2));
     pointz_sale = Column(DECIMAL(2));
     pointz = Column(Integer, nullable=False)
+    creation = Column(DateTime(), nullable=False)
 
 
 if __name__ == '__main__':
