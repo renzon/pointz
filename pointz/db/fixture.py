@@ -84,7 +84,8 @@ def populate_db():
         ),
 
     ]
-
+    session.add_all(transactions)
+    session.commit()
     session.close()
 
 
