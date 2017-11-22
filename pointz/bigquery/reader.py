@@ -34,6 +34,8 @@ ORDER BY
   month
 """
 
+MAX_ID_QUERY = 'SELECT MAX(id) as max_id FROM `pointz.transactions`'
+
 
 def get_annual_dre_by_partner_region(year=None):
     if year is None:
@@ -47,6 +49,14 @@ def get_annual_dre_by_partner_region(year=None):
 
     # Waits for the query to finish
     return query_job.result()
+
+
+def get_max_transaction_id():
+    job_config = bigquery.QueryJobConfig()
+    query_job = client.query(MAX_ID_QUERY, job_config=job_config)
+
+    # Waits for the query to finish
+    return list(query_job.result())[0].max_id
 
 
 if __name__ == '__main__':

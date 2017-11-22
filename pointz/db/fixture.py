@@ -44,7 +44,7 @@ def populate_db():
             subsidiary=subsidiaries[0],
             sale=Decimal('0.00'),
             pointz_sale=Decimal('0.01'),
-            pointz=3,
+            pointz=2,
             creation=datetime(2017, 1, 3, 3, 4)
         ),
         Transaction(
@@ -63,7 +63,7 @@ def populate_db():
         ),
         Transaction(
             subsidiary=subsidiaries[1],
-            sale=Decimal('0.21'),
+            sale=Decimal('0.51'),
             pointz_sale=Decimal('0.00'),
             pointz=0,
             creation=datetime(2017, 1, 6, 3, 4)

@@ -1,3 +1,6 @@
+from pointz.db.reader import get_transactions_ordered_by_id
+
+
 def sql_transaction_to_bigquery_row(transaction):
     return (
         transaction.id,
@@ -15,3 +18,12 @@ def sql_transaction_to_bigquery_row(transaction):
         transaction.subsidiary.region.partner.id,
         transaction.subsidiary.region.partner.segment
     )
+
+def get_transaction_batches(id=None, limit=100):
+    if id is None:
+        id=0 # tem que buscar o maior id do BigQuery
+    transactions=get_transactions_ordered_by_id(id, limit)
+    while len(transactions) > 0:
+        yield transactions
+        transactions = get_transactions_ordered_by_id(transactions[-1].id, limit)
+

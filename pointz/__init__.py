@@ -1,7 +1,10 @@
 import os
 from os import path
 
-from pointz.bigquery.reader import get_annual_dre_by_partner_region
+from pointz.bigquery.client import client
+from pointz.bigquery.reader import get_annual_dre_by_partner_region, get_max_transaction_id
+from pointz.bigquery.schema import transactions_table
+from pointz.bigquery.uploader import get_transaction_batches, sql_transaction_to_bigquery_row
 from pointz.report import render_annual_dre_per_partner_region, render_multiple_annual_dres
 
 
@@ -18,4 +21,14 @@ def create_annual_dre_per_partner_region(year=None):
 
 
 if __name__ == '__main__':
+    print('Pegando id máximo de transação no Bigquery')
+    max_id = get_max_transaction_id()
+    print(f'Id máximo encontrado: {max_id}')
+    for batch in get_transaction_batches(max_id, limit=2):
+        rows = [sql_transaction_to_bigquery_row(transaction) for transaction in batch]
+        print('Carregando transações no Bigquery')
+        client.create_rows(transactions_table, rows)
+    print('Carregando no Bigquery Finalizado')
+    print('Gerando DRES')
     create_annual_dre_per_partner_region()
+    print('Relatórios gerados')

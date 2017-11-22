@@ -33,8 +33,8 @@ class Transaction(Base):
     id = Column(Integer, primary_key=True)
     subsidiary_id = Column(Integer, ForeignKey(Subsidiary.id), nullable=False)
     subsidiary = relationship(Subsidiary, innerjoin=True)
-    sale = Column(DECIMAL(2));
-    pointz_sale = Column(DECIMAL(2));
+    sale = Column(DECIMAL(10,2));
+    pointz_sale = Column(DECIMAL(10,2));
     pointz = Column(Integer, nullable=False)
     creation = Column(DateTime(), nullable=False)
 
