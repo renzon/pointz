@@ -1,6 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from pointz import settings
+
 Session = sessionmaker(bind=create_engine(
-    "mssql+pyodbc://SA:Passw0rd@MYMSSQL"
+    settings.DATABASE_URL
 ))

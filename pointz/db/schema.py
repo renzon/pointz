@@ -2,6 +2,8 @@ from sqlalchemy import Column, Integer, String, create_engine, ForeignKey, DECIM
 from sqlalchemy.ext.declarative.api import declarative_base
 from sqlalchemy.orm import relationship
 
+from pointz import settings
+
 Base = declarative_base()
 
 
@@ -41,7 +43,7 @@ class Transaction(Base):
 
 if __name__ == '__main__':
     engine = create_engine(
-        "mssql+pyodbc://SA:Passw0rd@MYMSSQL"
+        settings.DATABASE_URL
     )
 
     Base.metadata.create_all(engine)

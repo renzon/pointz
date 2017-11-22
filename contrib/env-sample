@@ -1,0 +1,2 @@
+BIGQUERY_SECRET_JSON= Put your Bigquery secret-json file path here
+DATABASE_URL=Put your database url here
