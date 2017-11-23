@@ -5,7 +5,7 @@ Prova de conceito para geração de relatório com BigQuery
 
 Instalação
 1. Instale python >= 3.6
-2. Instala a lib com
+2. Instale a lib com
     
    pip install pointz
 
