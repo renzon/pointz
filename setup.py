@@ -158,7 +158,8 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'generate_dre=pointz.main:main'
+            'generate_dre=pointz.main:create_annual_dre_per_partner_region',
+            'load_data=pointz.main:main',
         ]
     },
 )

@@ -17,6 +17,7 @@ Opcionalmente vc pode criar um arquivo .env na raiz do projeto. Confira contrib/
 
 ## Gerando DREs
 
-5. Rode python -m pointz para gerar os relatórios. Eles estarão dentro do diretório build   
+5. Rode generate_dre para gerar os relatórios
+6. Rode load_data para carregar dados do SQL Server no BigQuery e gerar os relatórios   
    
     
